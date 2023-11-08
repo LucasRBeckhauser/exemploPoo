@@ -1,11 +1,18 @@
 package com.senac.exemplo.model;
 
+import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
 
+@MappedSuperclass
 public class Pessoa extends EntityId {
 
+   @Column(name = "nome",nullable = false)
     private String nome;
+    @Column(name = "telefone", nullable = false)
     private String telefone;
+    @Column(name = "endereco",nullable = false)
     private String endereco;
+    @Column(name = "email",nullable = false)
     private String email;
 
     public String getNome() {
