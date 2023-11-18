@@ -19,7 +19,7 @@ public class FornecedorService {
 
         public Fornecedor salvar(Fornecedor entity) {
 
-            if (repository.findBycnpj(entity.getCnpj()) != null) {
+            if (repository.findByCnpj(entity.getCnpj()) != null) {
 
                 throw new ValidationException("Já existe um cliente com esse CNPJ cadastrado");
             }

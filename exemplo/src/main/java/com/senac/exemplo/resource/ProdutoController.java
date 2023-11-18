@@ -11,11 +11,9 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.util.List;
 
-public class ProdutoController {
-
-    @RestController
-    @RequestMapping("/api/produtos")
-    public class ClienteController extends AbstractController {
+@RequestMapping("/api/produtos")
+@RestController
+public class ProdutoController extends AbstractController {
 
         @Autowired
         private ProdutoService service;
@@ -52,4 +50,4 @@ public class ProdutoController {
         }
     }
 
-}
+

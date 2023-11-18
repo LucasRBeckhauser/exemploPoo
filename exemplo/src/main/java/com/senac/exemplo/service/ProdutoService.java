@@ -20,13 +20,15 @@ public class ProdutoService {
 
     public Produto salvar(Produto entity)  {
 
-//        if (entity.getNome().length() < 3) {
-//            throw new ValidationException("O nome deve ter mais de 3 caracteres");
-//        }
-//
-//        if(repository.findByCpf(entity.getCpf()) != null) {
-//            throw new ValidationException("Já existe um cliente com esse CPF cadastrado");
-//        }
+        if(entity.getPrecoCompra() > entity.getPrecoVenda()) {
+            throw new ValidationException("O preço de venda deve ser maior que o preço de compra ");
+        }
+
+        if (repository.findByDescricao(entity.getDescricao()) != null) {
+
+            throw new ValidationException("Já existe um produto cadastrado com essa descricao");
+        }
+
 
         return  repository.save(entity);}
 

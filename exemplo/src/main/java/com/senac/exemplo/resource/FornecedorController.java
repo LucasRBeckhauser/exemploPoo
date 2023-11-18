@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/fornecedor")
-public class FornecedorController {
+public class FornecedorController  extends AbstractController{
 
         @Autowired
         private FornecedorService service;

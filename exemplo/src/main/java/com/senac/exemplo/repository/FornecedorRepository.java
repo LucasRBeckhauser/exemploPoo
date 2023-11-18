@@ -11,6 +11,6 @@ import javax.persistence.EntityManager;
 @Repository
 public interface FornecedorRepository extends JpaRepository<Fornecedor, Long> {
 
-    public Cliente findBycnpj (String cpf);
+    public Fornecedor findByCnpj (String Cnpj);
 
 }
