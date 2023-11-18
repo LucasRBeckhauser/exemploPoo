@@ -1,9 +1,9 @@
 package com.senac.exemplo.resource;
 
 import com.senac.exemplo.model.Cliente;
-import com.senac.exemplo.model.Fornecedor;
+import com.senac.exemplo.model.Produto;
 import com.senac.exemplo.service.ClienteService;
-import com.senac.exemplo.service.FornecedorService;
+import com.senac.exemplo.service.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,29 +11,31 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.util.List;
 
-@RestController
-@RequestMapping("/api/fornecedor")
-public class FornecedorController {
+public class ProdutoController {
+
+    @RestController
+    @RequestMapping("/api/produtos")
+    public class ClienteController extends AbstractController {
 
         @Autowired
-        private FornecedorService service;
+        private ProdutoService service;
 
 
         @PostMapping
-        public ResponseEntity create(@RequestBody Fornecedor entity) {
-            Fornecedor save = service.salvar(entity);
-            return  ResponseEntity.created(URI.create("/api/fornecedor/" + entity.getId())).body(save);
+        public ResponseEntity create(@RequestBody Produto entity) {
+            Produto save = service.salvar(entity);
+            return  ResponseEntity.created(URI.create("/api/produtos/" + entity.getId())).body(save);
         }
 
         @GetMapping
         public ResponseEntity findAll(){
-            List<Fornecedor> fornecedores = service.buscaTodos();
-            return ResponseEntity.ok(fornecedores);
+            List<Produto> clientes = service.buscaTodos();
+            return ResponseEntity.ok(clientes);
         }
 
         @GetMapping ("{id}")
         public ResponseEntity findById(@PathVariable ("id") Long id) {
-            Fornecedor produto = service.buscaPorId(id);
+            Produto produto = service.buscaPorId(id);
             return ResponseEntity.ok(produto);
         }
 
@@ -44,9 +46,10 @@ public class FornecedorController {
         }
 
         @PutMapping("{id}")
-        public  ResponseEntity update(@PathVariable("id") Long id, @RequestBody Fornecedor entity) {
-            Fornecedor alterado = service.alterar(id, entity);
+        public  ResponseEntity update(@PathVariable("id") Long id, @RequestBody Produto entity) {
+            Produto alterado = service.alterar(id, entity);
             return ResponseEntity.ok().body(alterado);
         }
     }
 
+}
